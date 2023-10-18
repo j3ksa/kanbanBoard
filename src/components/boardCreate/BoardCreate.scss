@@ -1,0 +1,22 @@
+.board-create {
+    display: flex;
+    width: 278px;
+    height: 32px;
+    padding: 8px 12px 8px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    color: var(--midnight-blue-500, #88819F);
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    &:hover {
+        cursor: pointer;
+    }
+}

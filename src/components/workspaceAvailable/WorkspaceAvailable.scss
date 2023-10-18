@@ -1,0 +1,27 @@
+.workspace-available {
+    width: 278px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #F4F7FE;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 16px 0 16px 16px;
+    margin-bottom: 8px;
+    border: 0;
+    img {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+    }
+    p {
+        color: #001C39;
+        font-family: Inter;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 18px;
+        margin-left: 12px;
+    }
+}

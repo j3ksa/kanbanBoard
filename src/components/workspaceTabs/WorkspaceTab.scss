@@ -1,0 +1,18 @@
+.workspace-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #B7BEC5;
+    p {
+        margin-left: 16px;
+        font-family: Inter;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 18px;
+    }
+    &:hover {
+        color: #007DFC;
+        cursor: pointer;
+    }
+}
