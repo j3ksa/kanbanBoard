@@ -9,8 +9,9 @@ type TabProps = {
 }
 
 export const WorkspaceTab= ({data}: TabProps) => {
+    const isBoards = data.name === "Boards"
     return (
-        <div className="workspace-tab">
+        <div className={`workspace-tab  ${isBoards && 'selected'}`}>
             <data.icon />
             <p>{data.name}</p>
         </div>

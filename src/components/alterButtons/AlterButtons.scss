@@ -1,0 +1,15 @@
+.alter-buttons {
+    display: none;
+    position: absolute;
+    right: 16px;
+    :hover > & {
+        display: block;
+    }
+    button {
+        border: none;
+        background: transparent;
+        :hover {
+            cursor: pointer;
+        }
+    }
+}

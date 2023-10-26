@@ -4,3 +4,6 @@ export * from './Boards';
 export * from './Dashboard';
 export * from './Profile';
 export * from './Search';
+export * from './Delete';
+export * from './Edit'
+export * from './Check'
