@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { workspaceSlice ,boardsSlice, cardSlice, subCardSlice } from './slices';
+import { workspaceSlice, boardsSlice, cardSlice, subCardSlice } from './slices';
 import {
   persistStore,
   persistReducer,

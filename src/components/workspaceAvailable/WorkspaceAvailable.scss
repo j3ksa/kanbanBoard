@@ -12,11 +12,13 @@
     border: 0;
     position: relative;
     cursor: grab;
+
     img {
         width: 32px;
         height: 32px;
         flex-shrink: 0;
     }
+
     p {
         color: #001C39;
         font-size: 13px;
@@ -25,9 +27,11 @@
         line-height: 18px;
         margin-left: 12px;
     }
+
     :hover {
         cursor: pointer;
     }
+
     &-chosen {
         @extend .workspace-available;
         background-color: #FFF;

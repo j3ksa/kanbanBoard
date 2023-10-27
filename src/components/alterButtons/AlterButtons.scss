@@ -1,13 +1,21 @@
 .alter-buttons {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    visibility: hidden;
     position: absolute;
     right: 16px;
-    :hover > & {
-        display: block;
+    background-color: white;
+    border-radius: 8px;
+
+    :hover>& {
+        visibility: visible;
     }
+
     button {
         border: none;
         background: transparent;
+
         :hover {
             cursor: pointer;
         }

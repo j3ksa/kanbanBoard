@@ -41,7 +41,7 @@ export const WorkspacesSidebar = () => {
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
           <SortableContext items={workspaces} strategy={verticalListSortingStrategy}>
             {workspaces.map((workspace, index) => (
-              <WorkspaceAvailable data={workspace} key={index}/>
+              <WorkspaceAvailable data={workspace} key={index} />
             ))}
           </SortableContext>
         </DndContext>

@@ -8,7 +8,8 @@ const initialState: CardRoot = {
         {
             id: 'card-1',
             boardId: 'board-1',
-            name: "New task"
+            name: "New task",
+            isDone: false
         }
     ],
 };
@@ -39,12 +40,17 @@ export const cardSlice = createSlice({
             state.cards = arrayMove(state.cards, oldIndex, newIndex);
             return state
         },
+        setCardDone: (state, action: PayloadAction<{ id: string }>) => {
+            const { id } = action.payload
+            const index = state.cards.findIndex(card => card.id === id)
+            state.cards[index].isDone = !state.cards[index].isDone
+        },
         resetCard: () => {
-          initialState
+            initialState
         }
-        
+
     },
 })
 
 
-export const { setCardName, setCardBoardId, addCard, removeCard, moveCard, resetCard } = cardSlice.actions;
+export const { setCardName, setCardBoardId, addCard, removeCard, moveCard, setCardDone, resetCard } = cardSlice.actions;

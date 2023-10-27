@@ -8,7 +8,8 @@ const initialState: SubCardRoot = {
         {
             id: 'subCard-1',
             cardId: 'card-1',
-            name: "New sub task"
+            name: "New sub task",
+            isDone: false
         }
     ],
 };
@@ -34,6 +35,11 @@ export const subCardSlice = createSlice({
             state.subCards = arrayMove(state.subCards, oldIndex, newIndex);
             return state
         },
+        setSubCardDone: (state, action: PayloadAction<{ id: string }>) => {
+            const { id } = action.payload
+            const index = state.subCards.findIndex(subCard => subCard.id === id)
+            state.subCards[index].isDone = !state.subCards[index].isDone
+        },
         resetSubCard: () => {
             initialState
         }
@@ -41,4 +47,4 @@ export const subCardSlice = createSlice({
 })
 
 
-export const { setSubCardName, addSubCard, removeSubCard, moveSubCard, resetSubCard } = subCardSlice.actions;
+export const { setSubCardName, addSubCard, removeSubCard, moveSubCard, setSubCardDone, resetSubCard } = subCardSlice.actions;

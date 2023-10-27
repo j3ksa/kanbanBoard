@@ -16,25 +16,23 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    cursor: grab;
 
     &-sub {
         @extend .card;
         width: 262px;
         margin-left: auto;
-        cursor: auto
     }
+
     &-new {
         @extend .card;
         border: none;
-        cursor: auto
     }
+
     &-change {
         @extend .card;
         border: none;
         border-radius: 8px;
         padding: 2px;
         padding-left: 5px;
-        cursor: auto
     }
 }

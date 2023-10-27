@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { AlterButtons } from "../alterButtons/AlterButtons"
 import { useDispatch, useSelector } from "react-redux"
-import { removeCard, setCardName, addSubCard } from "../../store/slices"
+import { removeCard, setCardName, addSubCard, setCardDone } from "../../store/slices"
 import { Card as CardProps } from "../../store/types"
 import { SubCard } from "../subCard/SubCard"
 import { RootState } from "../../store/store"
@@ -26,6 +26,12 @@ export const Card = ({ card, isOverlay }: Props) => {
     const style = {
         transition,
         transform: CSS.Transform.toString(transform),
+        backgroundColor: card.isDone ? 'lightgreen' : 'white',
+        cursor: isDragging ? 'grabbing' : 'grab'
+    }
+
+    const handleDone = () => {
+        dispatch(setCardDone({ id: card.id }))
     }
 
     const deleteCard = () => {
@@ -44,7 +50,8 @@ export const Card = ({ card, isOverlay }: Props) => {
             dispatch(addSubCard({
                 id: `subCard-${subCards.length + 1}`,
                 cardId: card.id,
-                name: subCardName
+                name: subCardName,
+                isDone: false,
             }))
             setSubCardName('')
         }
@@ -71,7 +78,7 @@ export const Card = ({ card, isOverlay }: Props) => {
                     style={style}
                 >
                     {card.name}
-                    <AlterButtons add={setShowCreateSubCard} edit={setShowCard} deleteFnc={deleteCard} />
+                    <AlterButtons add={setShowCreateSubCard} check={handleDone} correctButton={card.isDone} edit={setShowCard} deleteFnc={deleteCard} />
                 </div>
             }
             {showCreateSubCard &&
@@ -88,7 +95,7 @@ export const Card = ({ card, isOverlay }: Props) => {
             {!isOverlay &&
                 correctSubCards.map((subCard) => (
                     <SortableContext id={subCard.cardId} items={correctSubCards} strategy={verticalListSortingStrategy} key={subCard.id}>
-                        <SubCard subCard={subCard} isDragging={isDragging} />
+                        <SubCard subCard={subCard} />
                     </SortableContext>
                 ))
             }

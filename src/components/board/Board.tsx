@@ -22,12 +22,19 @@ export const Board = ({ board, isOverlay }: Props) => {
     const dispatch = useDispatch()
     const cards = useSelector((state: RootState) => state.app.cards.cards)
     const correctCards = cards.filter(card => card.boardId === board.id)
-    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: board.id, animateLayoutChanges: () => false })
+    const doneCards = correctCards.filter(card => card.isDone === true)
+    const subCards = useSelector((state: RootState) => state.app.subCards.subCards)
+    const correctSubCards = correctCards.map(card => {
+        return subCards.filter(subCard => subCard.cardId === card.id)
+    }).flat()
+    const doneSubCards = correctSubCards.filter(subCard => subCard.isDone === true)
+    const doneTasks = doneCards.length + doneSubCards.length
+    const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: board.id, animateLayoutChanges: () => false })
     const style = {
         transition,
         transform: CSS.Translate.toString(transform),
+        cursor: isDragging ? 'grabbing' : 'grab'
     }
-
     const [showInput, setShowInput] = useState(false)
     const [showTitleChange, setShowTitleChange] = useState(false)
     const [newCardName, setNewCardName] = useState('')
@@ -45,7 +52,8 @@ export const Board = ({ board, isOverlay }: Props) => {
             dispatch(addCard({
                 id: `card-${cards.length + 1}`,
                 boardId: board.id,
-                name: newCardName
+                name: newCardName,
+                isDone: false,
             }))
         }
         setNewCardName('')
@@ -76,6 +84,7 @@ export const Board = ({ board, isOverlay }: Props) => {
                 :
                 <div className="title">
                     {board.name}
+                    <span className="counter">Done: {doneTasks}</span>
                     <AlterButtons edit={setShowTitleChange} deleteFnc={deleteBoard} />
                 </div>
             }

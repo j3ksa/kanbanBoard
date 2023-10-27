@@ -1,5 +1,5 @@
 export const Check = () => (
-    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.16668 10.1148L13.2947 3.98608L14.238 4.92875L7.16668 12.0001L2.92401 7.75742L3.86668 6.81475L7.16668 10.1148Z" fill="currentColor" />
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
+        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
     </svg>
 )

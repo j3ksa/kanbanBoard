@@ -33,7 +33,6 @@ export const WorkspaceBoards = () => {
     const handleDragEnd = (e: DragEndEvent) => {
         setActiveId('')
         const { active, over } = e
-
         const activeId = String(active.id);
         const overId = String(over?.id)
         const isActiveBoard = activeId.includes('board')
@@ -68,6 +67,9 @@ export const WorkspaceBoards = () => {
             } else {
                 if (isOverParent.includes('board')) {
                     dispatch(setCardBoardId({ id: activeId, name: isOverParent }))
+                } else if (isOverParent.includes('card')) {
+                    const correctCard = cards.filter(card => card.id === isOverParent)
+                    dispatch(setCardBoardId({ id: activeId, name: correctCard[0].boardId }))
                 } else {
                     dispatch(setCardBoardId({ id: activeId, name: overId }))
                 }
@@ -106,7 +108,7 @@ export const WorkspaceBoards = () => {
         }
         if (activeId.includes('subCard') && activeSubCard) {
             return (
-                <SubCard subCard={activeSubCard} isDragging={false} isOverlay={true} />
+                <SubCard subCard={activeSubCard} isOverlay={true} />
             )
         }
     }

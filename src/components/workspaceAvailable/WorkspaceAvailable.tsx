@@ -45,6 +45,8 @@ export const WorkspaceAvailable = ({ data }: Props) => {
     navigate(`/?workId=${data.id}`)
   }
 
+  const isImage = data?.image?.includes('svg')
+
   return (
     <>
       {workspaceChange ?
@@ -65,7 +67,11 @@ export const WorkspaceAvailable = ({ data }: Props) => {
           {...listeners}
           style={style}
         >
-          <img src={data.image} alt={'workspace name'} />
+          {
+            isImage ?
+              <img src={data.image} alt={'workspace name'} /> :
+              <p>{data.name.charAt(0).toUpperCase()}</p>
+          }
           <p>{data.name}</p>
           <AlterButtons edit={setWorkspaceChange} deleteFnc={(e) => deleteWorkspace(e)} />
         </div>

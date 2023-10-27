@@ -45,10 +45,11 @@
         border-radius: 8px;
         background-color: #B3C4D6;
         margin-right: 12px;
-        &-input {
-            display: hidden;
-        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
     &-create-input {
 
         border-radius: 8px;

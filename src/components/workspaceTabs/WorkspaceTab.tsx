@@ -8,7 +8,7 @@ type TabProps = {
     }
 }
 
-export const WorkspaceTab= ({data}: TabProps) => {
+export const WorkspaceTab = ({ data }: TabProps) => {
     const isBoards = data.name === "Boards"
     return (
         <div className={`workspace-tab  ${isBoards && 'selected'}`}>

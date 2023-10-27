@@ -14,50 +14,29 @@ export const WorkspaceCreate = ({ workspaceQuantity }: Props) => {
   const navigate = useNavigate();
   const [addNew, setAddNew] = useState(false)
   const [name, setName] = useState('')
-  const [workImage, setWorkImage] = useState('')
 
   const handleConfirm = () => {
     setAddNew(false)
     dispatch(addWorkspace({
       id: workspaceQuantity + 1,
       name,
-      image: workImage
     }))
-    setWorkImage('')
     setName('')
     navigate(`/?workId=${workspaceQuantity + 1}`)
   }
 
-  const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return;
-    const imageBlob = new Blob([e.target.files[0]], { type: 'image/jpeg' })
-    const imageUrl = URL.createObjectURL(imageBlob)
-    setWorkImage(imageUrl)
-  }
-  const isDisabled = name.length === 0 || !workImage
+
+
+
+  const isDisabled = name.length === 0
   return (
     <>
       {addNew ?
         <>
           <div className='workspace-available'>
-            <label className='workspace-create-image'>
-              {
-                workImage ?
-                  <img
-                    src={workImage}
-                    alt='Uploaded image'
-                  />
-                  :
-                  <input
-                    className='workspace-create-image-hidden'
-                    type='file'
-                    accept='image/*'
-                    multiple={false}
-                    onChange={handleImage}
-                    hidden
-                  />
-              }
-            </label>
+            <div className='workspace-create-image'>
+              {name.charAt(0).toUpperCase()}
+            </div>
             <input
               className='workspace-create-input'
               onChange={(e) => setName(e.target.value)}

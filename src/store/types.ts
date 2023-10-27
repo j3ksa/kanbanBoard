@@ -5,7 +5,7 @@ export interface WorkspaceRoot {
 export interface Workspace {
     id: number
     name: string
-    image: string
+    image?: string
 }
 
 export interface BoardRoot {
@@ -26,6 +26,7 @@ export interface Card {
     id: string
     boardId: string
     name: string
+    isDone: boolean
 }
 
 export interface SubCardRoot {
@@ -36,6 +37,7 @@ export interface SubCard {
     id: string
     cardId: string
     name: string
+    isDone: boolean
 }
 
 export interface NameProps {

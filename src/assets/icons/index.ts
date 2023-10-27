@@ -7,3 +7,4 @@ export * from './Search';
 export * from './Delete';
 export * from './Edit'
 export * from './Check'
+export * from './Cancel'
